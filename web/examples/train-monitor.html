@@ -35,7 +35,8 @@
                         } else {
                             line += departure.format('HH:mm');
                         }
-                        line += '</td><td>' + this.name + '</td><td>' + this.to + '</td></tr>';
+                        line += '</td><td>' + this.name + '</td><td>' + this.to + '</td><td><i>' + 
+                            this.passList.slice(1, 4).map(pass => pass.station.name).join('&mdash;') + '</i></td></tr>';
                         $('#stationboard tbody').append(line);
                     });
                 }, 'json');
@@ -109,21 +110,21 @@
 <body>
 
 <div class="container">
-    <div class="col-sm-8 col-sm-offset-2">
+    <div class="col-sm-10 col-sm-offset-1">
 
     <header>
-        <h1><a href="../">Transport</a></h1>
-        <p>Swiss public transport API</p>
+        <h1>Train Monitor</a></h1>
+        <p></p>
     </header>
 
     <article>
         <p class="pull-right">
-            <a class="btn btn-link" href="https://github.com/OpendataCH/Transport/blob/master/web/examples/stationboard.html" target="_blank">
+            <a class="btn btn-link" href="https://github.com/wato471/Transport/blob/train-monitor/web/examples/train-monitor.html" target="_blank">
                 <span class="glyphicon glyphicon-new-window"></span>
                 Source Code
             </a>
         </p>
-        <h3>Train Monitor</h3>
+        <h3>Bahnhof</h3>
         <div class="ui-widget station">
             <input class="form-control" id="station" value="Schlieren" placeholder="Station" />
         </div>
@@ -132,8 +133,9 @@
 
         <table id="stationboard">
             <colgroup>
+                <col width="80">
                 <col width="120">
-                <col width="140">
+                <col width="120">
                 <col width="230">
             </colgroup>
             <thead>
@@ -141,6 +143,7 @@
                     <th align="left">Zeit</th>
                     <th>&nbsp;</th>
                     <th align="left">Nach</th>
+                    <th align="left">Über</th>
                 </tr>
             </thead>
             <tbody></tbody>
